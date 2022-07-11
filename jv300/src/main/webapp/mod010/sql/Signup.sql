@@ -1,0 +1,14 @@
+CREATE TABLE Signup (
+	sid 	BIGINT		PRIMARY KEY AUTO_INCREMENT,
+	name 	VARCHAR(6) 	NOT NULL,
+	ssn 	VARCHAR(14) NOT NULL,
+	phone 	VARCHAR(14) NOT NULL,
+	userId 	VARCHAR(16) NOT NULL,
+	passwd 	VARCHAR(60) NOT NULL
+)AUTO_INCREMENT = 1001;
+
+DROP TABLE SignUp;
+DELETE FROM Signup WHERE name = '이태영';
+SELECT * FROM SignUp;
+SELECT userId,passwd FROM SignUp
+SELECT userId,passwd FROM Signup WHERE userId= "lty"
