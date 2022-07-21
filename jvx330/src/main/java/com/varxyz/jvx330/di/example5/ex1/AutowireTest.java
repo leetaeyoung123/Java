@@ -1,19 +1,15 @@
-package com.varxyz.jvx330.di.example1;
+package com.varxyz.jvx330.di.example5.ex1;
 
 import org.springframework.context.support.GenericApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
-public class AppMain {
+public class AutowireTest {
 	public static void main(String[] args) {
-		String config="com/varxyz/jvx330/di/example1/beans.xml";
+		String config = "com/varxyz/jvx330/di/example5/ex1/beans.xml";
 		GenericApplicationContext context = new GenericXmlApplicationContext(config);
 		
-		Foo foo = context.getBean("foo",Foo.class);
-		System.out.println(foo);
-		
-		Foo foo2 = context.getBean("foo2",Foo.class);
-		System.out.println(foo2);
-		
+		MemberController controller = context.getBean("memberController", MemberController.class);
+		controller.processRequest();
 		context.close();
 	}
 }
