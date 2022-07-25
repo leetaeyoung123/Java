@@ -9,6 +9,7 @@ import com.varxyz.jvx330.lifecycle.jdbc.example1.AddCustomerDao;
 import com.varxyz.jvx330.lifecycle.jdbc.example1.AddCustomerDataSourceDao;
 import com.varxyz.jvx330.lifecycle.jdbc.example2.CustomerDao;
 import com.varxyz.jvx330.lifecycle.jdbc.example3.CustomerDao2;
+import com.varxyz.jvx330.lifecycle.jdbc.example5.AccountDao;
 
 
 @Configuration
@@ -51,5 +52,7 @@ public class DataSourceConfig {
 	public CustomerDao2 customerDao2() {
 		return new CustomerDao2(dataSource());
 	}
+
+
 	
 }
