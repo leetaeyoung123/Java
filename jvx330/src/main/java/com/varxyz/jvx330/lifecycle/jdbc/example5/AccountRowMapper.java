@@ -31,5 +31,4 @@ public class AccountRowMapper implements RowMapper<Account> {
 		account.setRegDate(rs.getTime("regDate"));
 		return account;
 	}
-
 }
