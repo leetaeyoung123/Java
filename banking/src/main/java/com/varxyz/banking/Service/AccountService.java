@@ -15,7 +15,9 @@ public interface AccountService {
 	AccountDao dao = context.getBean("accountDao", AccountDao.class);
 	
 	public void addAccount(Account account);
-	public List<Account> checkingAccount(String customerId);
-	public List<Account> balanceAccount(String accountNum);
-	public void sendAccount(double balance, String accountNum);
+	public List<Account> getAccounts(String customerId);
+	public List<Account> getBalance(String accountNum);
+	public double withdrawal(double balance, String accountNum);
+	public double deposit(double balance, String accountNum);
+	public boolean transfer(double amount, String sendAccount, String getAccount);
 }

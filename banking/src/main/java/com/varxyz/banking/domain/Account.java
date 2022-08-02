@@ -17,6 +17,9 @@ public class Account {
 	private double interestRate;
 	private double overAmount;
 	private String customerId;
+	private String sendAccount;
+	private String getAccount;
+	private double amount;
 	
 	public Account() {
 		super();

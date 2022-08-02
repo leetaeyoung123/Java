@@ -7,7 +7,6 @@ import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import com.varxyz.banking.domain.Account;
-import com.varxyz.banking.rowmapper.AccountRowMapper;
 
 public class AccountDao {
 	private JdbcTemplate jdbcTemplate;
@@ -33,23 +32,23 @@ public class AccountDao {
 		}	
 	}
 	
-	public List<Account> checkingAccount(String customerId) {
+	public List<Account> getAccounts(String customerId) {
 		String sql = "SELECT * FROM Account WHERE customerId = ?";
 		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<Account>(Account.class), customerId);
 	}
 	
-	public List<Account> balanceAccount(String accountNum){
+	public List<Account> getBalance(String accountNum){
 		String sql = "SELECT balance, accountNum FROM Account WHERE accountNum = ?";
 		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<Account>(Account.class), accountNum);
 	}
-	
-	public Account checkingAccountNum(String accountNum) {
-		String sql = "SELECT balance FROM Account WHERE accountNum = ?";
-		return jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<Account>(Account.class), accountNum);
+		
+	public double withdrawal(double balance, String accountNum) {
+		String sql = "UPDATE Account SET balance = ? WHERE accountNum = ?";
+		return jdbcTemplate.update(sql, (getBalance(accountNum)).get(0).getBalance()-balance, accountNum);
 	}
 	
-	public void SendAccount(double balance, String accountNum) {
+	public double deposit(double balance, String accountNum) {
 		String sql = "UPDATE Account SET balance = ? WHERE accountNum = ?";
-		jdbcTemplate.update(sql, checkingAccountNum(accountNum).getBalance()-balance, accountNum);
+		return jdbcTemplate.update(sql, (getBalance(accountNum)).get(0).getBalance()+balance, accountNum);
 	}
 }
