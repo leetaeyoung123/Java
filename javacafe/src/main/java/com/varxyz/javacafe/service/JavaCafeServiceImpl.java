@@ -20,9 +20,24 @@ public class JavaCafeServiceImpl implements JavaCafeService{
 	}
 
 	@Override
-	public List<Category> selectAll() {
-		System.out.println(2);
-		return dao.selectAll();
+	public List<Category> selectHighCate() {
+		return dao.selectHighCate();
+	}
+
+	@Override
+	public List<Cafe> selectLowCate(String highCateGory) {
+		return dao.selectLowCate(highCateGory);
+	}
+
+	@Override
+	public List<Cafe> selectMenuList(String lowCate) {
+		return dao.selectMenuList(lowCate);
+	}
+
+	@Override
+	public List<Cafe> payment(double price) {
+		
+		return null;
 	}
 
 }

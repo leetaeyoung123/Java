@@ -1,5 +1,23 @@
 @charset "UTF-8";
-body {
-	background: skyblue;
-	text-align: center;
+a{
+	text-decoration: none;
+}
+
+body{
+	background-color:#E8F9FD!important;
+}
+.cover-container{
+	background-color:white!important;
+	border-radius: 10px;
+	margin-top: 25px;
+	margin-bottom: 25px;
+}
+
+.imgsize img{
+	width: 100px;
+	height: 100px;
+}
+
+.imgsize a{
+	margin-top: 30px;
 }

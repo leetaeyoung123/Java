@@ -10,6 +10,6 @@
 </head>
 <body>
 <h3>카테고리 추가</h3>
-	<label>카테고리 등록완료 </label>
+	<label>카테고리 등록완료: ${cate}</label>
 </body>
 </html>

@@ -13,10 +13,7 @@
 
 <form:form method="post" modelAttribute="cate">
 	<label>카테고리: </label>
-	<form:select path="cateName">
-	<option value="unknown">--선택--</option>
-	<form:options items="${cateGoryList}"/>
-	</form:select><br>
+		<form:input path="categoryname"/>
 	<input type="submit" value="카테고리 설정"/>
 </form:form>
 

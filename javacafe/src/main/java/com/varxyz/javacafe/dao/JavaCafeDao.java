@@ -23,17 +23,28 @@ public class JavaCafeDao {
 	
 	public void addCafe(Cafe cafe) {
 		String sql = "INSERT INTO CafeTable "
-					+ " (name, price, stock, highCateGory, lowCateGory) "
-					+ " VALUES(?, ?, ?, ?, ?)";
+					+ " (name, price, stock, highCateGory, lowCateGory, imgUrl) "
+					+ " VALUES(?, ?, ?, ?, ?, ?)";
 		jdbcTemplate.update(sql, cafe.getName(), cafe.getPrice(), 
 								cafe.getStock(), cafe.getHighCateGory(),
-								cafe.getLowCateGory());
+								cafe.getLowCateGory(), cafe.getImgUrl());
 	}
 	
-	public List<Category> selectAll() {
+	public List<Category> selectHighCate() {
 		String sql = "SELECT * FROM CateGoryTable";
-		System.out.println(3);
 		System.out.println(jdbcTemplate.query(sql, new BeanPropertyRowMapper<Category>(Category.class)));
 		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<Category>(Category.class));
+	}
+	
+	public List<Cafe> selectLowCate(String highCateGory){
+		String sql = "SELECT * FROM CafeTable WHERE highCateGory = ?";
+		System.out.println(jdbcTemplate.query(sql, new BeanPropertyRowMapper<Cafe>(Cafe.class), highCateGory));
+		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<Cafe>(Cafe.class), highCateGory);
+	}
+	
+	public List<Cafe> selectMenuList(String lowCate){
+		String sql = "SELECT * FROM CafeTable WHERE lowCateGory = ?";
+		System.out.println(jdbcTemplate.query(sql, new BeanPropertyRowMapper<Cafe>(Cafe.class), lowCate));
+		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<Cafe>(Cafe.class), lowCate);
 	}
 }

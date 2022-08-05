@@ -17,5 +17,8 @@ public interface JavaCafeService {
 	
 	public void addCate(Category category);
 	public void addCafe(Cafe cafe);
-	public List<Category> selectAll();
+	public List<Category> selectHighCate();
+	public List<Cafe> selectLowCate(String highCateGory);
+	public List<Cafe> selectMenuList(String lowCate);
+	public List<Cafe> payment(double price);
 }

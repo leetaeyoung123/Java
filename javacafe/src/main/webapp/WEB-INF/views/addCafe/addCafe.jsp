@@ -11,42 +11,22 @@
 <body>
 <h3>메뉴 추가</h3>
 
-<form:form method="post" modelAttribute="cafe">
+<form action="addCafe" method="post" enctype=multipart/form-data>  
 	<label>카테고리: </label>
-	<form:select path="highCateGory">
-		<option value="unknown">--선택--</option>
-		<c:forEach var="x" items="${javacate}">
-			<form:options items="${x.categoryname}"/>
-		</c:forEach>
-	</form:select><br>
-	<label>이름: </label><form:input path="name"/>
-	<label>가격: </label><form:input path="price"/>
-	<label>개수: </label><form:input path="stock"/>
-	<label>카테고리: </label><form:input path="lowCateGory"/>
-	<input type="submit" value="카테고리 설정"/>
-</form:form>
+	
+		<select name="highCateGory">
+			<option value="unknown">--선택--</option>
+			<c:forEach var="item" items="${javacate}">
+				<option value="${item.categoryname}">${item.categoryname}</option>
+			</c:forEach>
+		</select><br>
+		
+	<label>이름: </label><input type=text name="name"/><br>
+	<label>가격: </label><input type=text name="price"/><br>
+	<label>재고: </label><input type=text name="stock"/><br>
+	<label>하위 카테고리: </label><input type="text" name="lowCateGory"/><br>
+	<label>이미지 선택: </label><input type="file" name="file"><br>
+	<input type="submit" value="카테고리 설정"/><br>
+</form>
 </body>
 </html>
-
-<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ page import="java.net.URLEncoder"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Add Menu</title>
-</head>
-<body>
-   <h3>메뉴 추가</h3>
-         <select name="highCateGory">
-            <option value="unknown">--선택--</option>
-               <c:forEach var="x" items="${javacate}">
-            <option value="${x.cateName}">${x.cateName}</option>
-               </c:forEach>  
-         </select>
-      <button>Add</button>
-   </form>
-</body>
-</html> --%>
