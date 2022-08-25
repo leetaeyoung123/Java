@@ -19,12 +19,13 @@ import com.varxyz.javacafe.service.JavaCafeServiceImpl;
 
 @Controller("controller.cateGoryList")
 public class CateGoryListController {
-	
+	List<String> sessionList = new ArrayList<>();
 	JavaCafeService service = new JavaCafeServiceImpl();
 	@GetMapping("/select/highCate")
 	public String selectHighCateForm(Model model) {
 		model.addAttribute("cate", new Category());
 		model.addAttribute("highCateSelect", service.selectHighCate());
+		System.out.println("session: " + sessionList);
 		return "select/highCate";
 	}
 	
@@ -37,12 +38,14 @@ public class CateGoryListController {
 	
 	@GetMapping("/select/lowCate")
 	public String selectLowCateForm(Model model, HttpSession session) {
+		sessionList = (List<String>) session.getAttribute("lowCate");
 		List<String> lowCateList = (List<String>) session.getAttribute("lowCate");
 		Set<String> set = new HashSet<String>(lowCateList);
 		List<String> newlowCateList = new ArrayList<>(set);
 		model.addAttribute("cafe", new Cafe());
 		model.addAttribute("lowCateSelect", newlowCateList);
-		return "/select/lowCate";
+		System.out.println("session: " + sessionList);
+		return "select/lowCate";
 	}
 
 	@PostMapping("/select/lowCate")
@@ -54,9 +57,11 @@ public class CateGoryListController {
 	
 	@GetMapping("/select/menu")
 	public String selectMenuForm(Model model, HttpSession session) {
+		sessionList = (List<String>) session.getAttribute("menu");
 		List<Cafe> list = (List<Cafe>) session.getAttribute("menu");
 		model.addAttribute("cafe", session.getAttribute("menu"));
-		return "/select/menu";
+		System.out.println("session: " + sessionList);
+		return "select/menu";
 	}
 	
 	@PostMapping("/select/menu")
@@ -68,6 +73,19 @@ public class CateGoryListController {
 		}
 		System.out.println(menuList);
 		model.addAttribute("menu", menuList);
-		return "/select/result";
+		return "redirect:/select/result";
 	}
+	
+	@GetMapping("/select/result")
+	public String resultForm(Model model, HttpSession session) {
+		sessionList = (List<String>) session.getAttribute("menu");
+		System.out.println("session: " + sessionList);
+		return "select/result";
+	}
+	@PostMapping("/select/result")
+	public String result(Model model) {
+		return "redirect:/select/home";
+	}
+	
+	
 }
