@@ -27,6 +27,7 @@ CREATE TABLE Account (
 )AUTO_INCREMENT = 3001;
 
 DROP TABLE Account
+DROP TABLE Customer
 
 SELECT * FROM Customer;
 
