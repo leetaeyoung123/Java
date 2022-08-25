@@ -25,7 +25,7 @@ public class JavaCafeServiceImpl implements JavaCafeService{
 	}
 
 	@Override
-	public List<Cafe> selectLowCate(String highCateGory) {
+	public List<String> selectLowCate(String highCateGory) {
 		return dao.selectLowCate(highCateGory);
 	}
 
@@ -34,10 +34,9 @@ public class JavaCafeServiceImpl implements JavaCafeService{
 		return dao.selectMenuList(lowCate);
 	}
 
-	@Override
-	public List<Cafe> payment(double price) {
-		
-		return null;
-	}
+//	@Override
+//	public List<String> lowCateAll(String highCateGory) {
+//		return dao.lowCateAll(highCateGory);
+//	}
 
 }

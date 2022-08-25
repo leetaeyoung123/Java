@@ -97,8 +97,8 @@
 		<main class="main1">
 			<form method="post" action="menu">
 						<c:forEach var="item" items="${menu}">
-							<img src="../resources/fileimg/${item.imgUrl}"/><br>
-							<input type="checkbox" >${item.name} ${item.price}<br>
+							<label for="check"><img src="../resources/fileimg/${item.imgUrl}"/></label><br>
+							<input id="check" type="checkbox" >${item.name} ${item.price}<br>
 						</c:forEach>
 	<input type="submit" value="결제"/>
 </form>

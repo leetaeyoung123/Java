@@ -7,7 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
+<c:forEach var="menu" items="${menu}">
 	<label>메뉴이름 :</label>${menu.name}<br>
 	<label>메뉴금액 :</label>${menu.price}<br>
+</c:forEach>
 </body>
 </html>

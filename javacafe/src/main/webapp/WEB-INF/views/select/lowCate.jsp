@@ -97,7 +97,7 @@
 		<main class="main1">
 			<form action="lowCate" method="post">
 				<c:forEach var="item" items="${lowCateSelect}">
-					<input type="submit" name="lowCateGory" value="${item.lowCateGory}">
+					<input type="submit" name="lowCateGory" value="${item}">
 				</c:forEach>
 			</form>
 		</main>

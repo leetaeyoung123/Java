@@ -19,3 +19,4 @@ SELECT * FROM CafeTable WHERE highCateGory = "음료"
 SELECT * FROM CafeTable
 SELECT * FROM CafeTable WHERE lowCateGory = "커피"
 DROP TABLE CafeTable
+SELECT lowCateGory FROM CafeTable
