@@ -13,7 +13,6 @@
 	<label>메뉴 등록완료 </label><br>
 	<label>이름 : ${cafe.name}</label><br>
 	<label>가격 : ${cafe.price}</label><br>
-	<label>재고: ${cafe.stock}</label><br>
 	<label>상위 카테고리: ${cafe.highCateGory}</label><br>
 	<label>하위 카테고리: ${cafe.lowCateGory}</label><br>
 </body>

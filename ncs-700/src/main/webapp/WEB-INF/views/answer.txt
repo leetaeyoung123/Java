@@ -1,3 +1,0 @@
-1. google.visualization.arrayToDataTable
-2. 동일한 형태의 배열
-3. 동적으로 컬럼이나 데이터를 처리한 경우

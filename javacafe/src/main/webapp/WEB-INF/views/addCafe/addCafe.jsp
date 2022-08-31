@@ -23,7 +23,6 @@
 		
 	<label>이름: </label><input type=text name="name"/><br>
 	<label>가격: </label><input type=text name="price"/><br>
-	<label>재고: </label><input type=text name="stock"/><br>
 	<label>하위 카테고리: </label><input type="text" name="lowCateGory"/><br>
 	<label>이미지 선택: </label><input type="file" name="file"><br>
 	<input type="submit" value="카테고리 설정"/><br>

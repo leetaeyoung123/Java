@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.varxyz.javacafe.domain.Cafe;
 import com.varxyz.javacafe.domain.Category;
+import com.varxyz.javacafe.domain.Root;
 
 public class JavaCafeServiceImpl implements JavaCafeService{
 
@@ -34,9 +35,28 @@ public class JavaCafeServiceImpl implements JavaCafeService{
 		return dao.selectMenuList(lowCate);
 	}
 
-//	@Override
-//	public List<String> lowCateAll(String highCateGory) {
-//		return dao.lowCateAll(highCateGory);
-//	}
+	@Override
+	public String findHighCate(String categoryname) {
+		return dao.findHighCate(categoryname);
+	}
 
+	@Override
+	public String findMenu(String name) {
+		return dao.findMenu(name);
+	}
+
+	@Override
+	public void updateCate(Category cate) {
+		dao.updateCate(cate);
+	}
+
+	@Override
+	public Root login(String rootId) {
+		return dao.login(rootId);
+	}
+
+	@Override
+	public List<Cafe> findAllMenu() {
+		return dao.findAllMenu();
+	}
 }

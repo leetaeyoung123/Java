@@ -1,6 +1,8 @@
 package com.varxyz.javacafe.controller;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 import javax.servlet.http.HttpServletRequest;
@@ -36,7 +38,6 @@ public class AddCafeController {
 		cafe.setHighCateGory(request.getParameter("highCateGory"));
 		cafe.setLowCateGory(request.getParameter("lowCateGory"));
 		cafe.setPrice(Integer.parseInt(request.getParameter("price")));
-		cafe.setStock(Integer.parseInt(request.getParameter("stock")));
 		String fileRealName = file.getOriginalFilename();
 		System.out.println("이름: " + file.getOriginalFilename());
 
@@ -56,9 +57,27 @@ public class AddCafeController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		if(request.getParameter("name") == null || request.getParameter("name") =="" || request.getParameter("name").length() == 0) {
+			model.addAttribute("msg", "메뉴 이름을 입력해주세요.");
+			return "error";
+		}
+		
+		List<Cafe> list = service.findAllMenu();
+		List<String> nameList = new ArrayList<>();
+		
+		for(int i = 0; i < list.size(); i++) {
+			nameList.add(list.get(i).getName());
+			if(service.findAllMenu().size() != 0) {
+				if(request.getParameter("name").equals(nameList.get(i))) {
+					model.addAttribute("msg", "메뉴 이름이 중복됩니다.");
+					return "error";
+				}
+			}
+		}
+
 		model.addAttribute("cafe", cafe);
 		service.addCafe(cafe);
-		JavaCafeService.context.close();
 		return "addCafe/addCafeSuccess";
 	}
 }

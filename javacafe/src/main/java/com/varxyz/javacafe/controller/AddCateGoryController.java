@@ -1,5 +1,7 @@
 package com.varxyz.javacafe.controller;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,6 +26,11 @@ public class AddCateGoryController {
 	public String addCateGory(Category cate, Model model) {
 		JavaCafeService service = new JavaCafeServiceImpl();
 		model.addAttribute("cate", cate);
+		System.out.println(service.findHighCate(cate.getCategoryname()));
+		if(cate.getCategoryname().equals(service.findHighCate(cate.getCategoryname()))) {
+			model.addAttribute("msg", "중복된 카테고리입니다.");
+			return "error";
+		}
 		service.addCate(cate);
 		JavaCafeService.context.close();
 		return "addCafe/addCategorySuccess";

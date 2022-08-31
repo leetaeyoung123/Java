@@ -5,6 +5,11 @@
 	height: 100px;
 }
 
+.imgsize .root{
+	width: 20px;
+	height: 20px;
+}
+
 .imgsize a{
 	margin-top: 30px;
 }

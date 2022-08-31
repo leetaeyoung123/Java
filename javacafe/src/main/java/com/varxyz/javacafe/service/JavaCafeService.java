@@ -8,6 +8,7 @@ import com.varxyz.javacafe.DataSourceConfig;
 import com.varxyz.javacafe.dao.JavaCafeDao;
 import com.varxyz.javacafe.domain.Cafe;
 import com.varxyz.javacafe.domain.Category;
+import com.varxyz.javacafe.domain.Root;
 
 public interface JavaCafeService {
 	AnnotationConfigApplicationContext context = 
@@ -20,5 +21,9 @@ public interface JavaCafeService {
 	public List<Category> selectHighCate();
 	public List<String> selectLowCate(String highCateGory);
 	public List<Cafe> selectMenuList(String lowCate);
-//	public List<String> lowCateAll(String highCateGory);
+	public String findHighCate(String categoryname);
+	public String findMenu(String name);
+	public void updateCate(Category cate);
+	public Root login(String rootId);
+	public List<Cafe> findAllMenu();
 }
